@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    env_file:
+      - .env
+    volumes:
+       - postgres:/data/postgres
+       - ./data/script.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+
+volumes:
+  postgres:
+

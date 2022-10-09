@@ -1,0 +1,7 @@
+fastapi[all]
+psycopg2
+sqlalchemy
+pydantic
+python-dotenv
+databases
+asyncpg
