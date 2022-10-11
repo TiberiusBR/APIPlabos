@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS users (
 	id int not null GENERATED ALWAYS AS IDENTITY ,
 	name varchar(100) not null,
-	login varchar(20)not null,
+	login varchar(100)not null,
 	password varchar(32) not null,
 	primary key (id)
 );
