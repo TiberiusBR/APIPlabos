@@ -52,3 +52,5 @@ docs/_build/
 #Others
 .env
 Dockerfile
+video.mp4
+index.html
