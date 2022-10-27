@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Request, Response, status
-from fastapi.responses import StreamingResponse, Response
-import os, re
-from pathlib import Path
+import os
+import re
+
+from fastapi import APIRouter, Request, status
+from fastapi.responses import Response
 
 video_router = APIRouter(prefix="/video")
 
@@ -10,7 +11,7 @@ video_router = APIRouter(prefix="/video")
 def play_video(request: Request, response: Response):
     header_range = request.headers.get("range")
     # TODO RETURN 400 if range header doesn't exist.
-    file_path = os.path.abspath("../video.mp4")
+    file_path = os.path.abspath("./video.mp4")
     file_size = os.stat(file_path).st_size  # Size in bytes
     # Parse Range
     # Example "bytes=32324"

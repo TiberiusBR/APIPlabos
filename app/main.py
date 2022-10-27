@@ -1,36 +1,25 @@
 from fastapi import FastAPI
 import uvicorn
-from fastapi.security import OAuth2PasswordBearer
-from app.config.conn import metadata, engine, database
-from app.routes.categoryRoutes import category_router
-from app.routes.videoRoutes import video_router
+from app.routes.category_routes import category_router
+from app.routes.video_routes import video_router
+from app.routes.course_routes import course_router
+from app.models import models
+from app.config.conn import engine
 
-metadata.create_all(engine)
-
+models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 app.include_router(category_router)
 app.include_router(video_router)
-
-
-@app.on_event("startup")
-async def startup():
-    await database.connect()
-
-
-@app.on_event("shutdown")
-async def shutdown():
-    await database.disconnect()
-
+app.include_router(course_router)
 
 @app.get("/")
 async def health():
     return {"Application": "Running"}
 
 
-#DEBUG
+# DEBUG
 
 if __name__ == "__main__":
     uvicorn.run(app)
