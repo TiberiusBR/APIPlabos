@@ -1,15 +1,15 @@
 from sqlalchemy import Column, String, Integer, ForeignKey, Boolean, Table
 from sqlalchemy.orm import relationship
-from app.config.conn import Base
+from app.database.conn import Base
 
 
 class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = Column(String(100), nullable=False)
-    login = Column(String(100), nullable=False)
-    password = Column(String(32), nullable=False)
+    name = Column(String, nullable=False)
+    login = Column(String, nullable=False)
+    password = Column(String, nullable=False)
 
     courses = relationship("Course", back_populates="user")
     registries = relationship("Registry", back_populates="user")
@@ -28,7 +28,7 @@ class Category(Base):
     __tablename__ = "category_name"
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = Column(String(250), nullable=False)
+    name = Column(String, nullable=False)
 
     courses = relationship("Course", secondary=CategoryCourse.__table__, back_populates="categories")
 
@@ -37,7 +37,7 @@ class Course(Base):
     __tablename__ = "course"
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    title = Column(String(250), nullable=False)
+    title = Column(String, nullable=False)
     course_load = Column(Integer, nullable=False)
     author_id = Column(Integer, ForeignKey("users.id"))
 
@@ -53,8 +53,8 @@ class Lesson(Base):
     __tablename__ = "lesson"
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
-    name = Column(String(150), nullable=False)
-    video_uuid = Column(String(36), nullable=False)
+    name = Column(String, nullable=False)
+    video_uuid = Column(String, nullable=False)
     course_id = Column(Integer, ForeignKey("course.id"))
 
     course = relationship("Course", back_populates="lessons")

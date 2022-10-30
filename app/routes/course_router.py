@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from app.repository import course_repo as repo
 from app.schemas import course as course_models
-from app.config.conn import get_db
+from app.database.conn import get_db
 
 course_router = APIRouter(prefix="/course")
 

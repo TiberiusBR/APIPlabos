@@ -4,7 +4,7 @@ from app.schemas.category import Category
 from app.schemas.lesson import Lesson
 from app.schemas.registry import Registry
 from app.schemas.review import Review
-from app.schemas.user import User
+from app.schemas.user import UserBaseSchema
 
 
 class CourseBase(BaseModel):
@@ -19,7 +19,7 @@ class CourseBase(BaseModel):
 class Course(CourseBase):
     id: int
 
-    user: User = None
+    user: UserBaseSchema = None
     lessons: list[Lesson] = None
     registries: list[Registry] = None
     reviews: list[Review] = None

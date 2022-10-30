@@ -2,20 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1043771-17ea-4257-8ed8-89ce9aefaa3a" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/models/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/routes/category_routes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/lesson.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/registry.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/schemas/review.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config/conn.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config/conn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config/conn.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/database/conn.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/category.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/category.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/categoryRoutes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/routes/videoRoutes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/video_routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schemas/schemas.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/category_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/category_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/course_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/course_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/routes/video_routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes/video_router.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/course.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/course.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/script.sql" beforeDir="false" afterPath="$PROJECT_DIR$/data/script.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +107,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/routes/course_routes.py</url>
+          <url>file://$PROJECT_DIR$/app/routes/course_router.py</url>
           <line>12</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>

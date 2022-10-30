@@ -1,18 +1,23 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, constr
 
 
-class UserBase(BaseModel):
+class UserBaseSchema(BaseModel):
     name: str
 
     class Config:
         orm_mode = True
 
 
-class UserCreate(UserBase):
-    password: str
+class CreateUserSchema(UserBaseSchema):
     login: str
+    password: constr(min_length=8)
+    password_confirm: str
 
 
-class User(UserBase):
+class LoginUserSchema(BaseModel):
+    login: str
+    password: constr(min_length=8)
+
+
+class UserResponse(UserBaseSchema):
     id: int
-    # courses: list[Course] = []
