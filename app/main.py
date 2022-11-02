@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from fastapi.security import OAuth2PasswordBearer
+# from fastapi.security import OAuth2PasswordBearer
 
 from app.routes.category_router import category_router
 from app.routes.video_router import video_router
@@ -11,14 +11,15 @@ from app.database.conn import engine
 
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+# oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
+app = FastAPI()
 
 app.include_router(category_router)
 app.include_router(video_router)
 app.include_router(course_router)
 app.include_router(auth_router)
+
 
 @app.get("/")
 async def health():
