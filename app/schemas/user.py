@@ -21,3 +21,4 @@ class LoginUserSchema(BaseModel):
 
 class UserResponse(UserBaseSchema):
     id: int
+    name: str

@@ -54,3 +54,6 @@ docs/_build/
 Dockerfile
 video.mp4
 index.html
+.idea/
+.vscode/
+.venv/

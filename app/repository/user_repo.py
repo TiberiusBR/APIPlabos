@@ -5,8 +5,12 @@ from app.schemas.user import CreateUserSchema
 from app.helpers.auth_helpers import hash_password
 
 
-def get_user_by_login(db: Session, login: str):
+def get_user_by_login(db: Session, login: str) -> User:
     return db.query(models.User).filter(models.User.login == login.lower()).first()
+
+
+def get_user_by_id(db: Session, id: str) -> User:
+    return db.query(models.User).filter(models.User.id == id).first()
 
 
 def create_user(db: Session, user_payload: CreateUserSchema):
