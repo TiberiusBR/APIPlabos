@@ -1,10 +1,6 @@
 from pydantic import BaseModel
 
 from app.schemas.category import Category
-from app.schemas.lesson import Lesson
-from app.schemas.registry import Registry
-from app.schemas.review import Review
-from app.schemas.user import UserBaseSchema
 
 
 class CourseBase(BaseModel):
@@ -19,11 +15,10 @@ class CourseBase(BaseModel):
 class Course(CourseBase):
     id: int
 
-    user: UserBaseSchema = None
-    lessons: list[Lesson] = None
-    registries: list[Registry] = None
-    reviews: list[Review] = None
-
 
 class CourseCategory(Course):
     categories: list[Category] = None
+
+
+class CreateCourseCategory(CourseBase):
+    categories: list[int] = None

@@ -1,5 +1,6 @@
 from sqlalchemy.orm import Session
 from app.models import models
+from app.schemas.course import CourseBase
 
 
 def get_all_courses(db: Session):
@@ -10,11 +11,29 @@ def get_course_by_id(db: Session, course_id: int):
     return db.query(models.Course).filter(models.Course.id == course_id).first()
 
 
-def get_course_by_title(db: Session, title: str):
-    return db.query(models.Course).filter(models.Course.title == title).first()
+def get_courses_by_title(db: Session, title: str):
+    search = '%{}%'.format(title)
+    return db.query(models.Course).filter(models.Course.title.like(search)).all()
 
 
-def get_course_by_author(db: Session, author_name: str):
-    return db.query(models.Course)\
-        .filter(models.Course.users)\
-        .filter(models.User.name == author_name).all()
+def get_courses_by_author_name(db: Session, author_name: str):
+    search = '%{}%'.format(author_name)
+    query = db.query(models.Course).join(models.User).filter(models.User.name.like(search)).all()
+    return query
+
+
+def get_courses_by_author_id(db: Session, author_id: int):
+    query = db.query(models.Course).join(models.User).filter(models.User.id == author_id).all()
+    return query
+
+
+def get_course_by_category(db: Session, category_id: int):
+    return db.query(models.Course).filter(models.Course.categories.id == category_id).all()
+
+
+def create_course(db: Session, course: CourseBase):
+    new_course = models.Course(**course.dict())
+    db.add(new_course)
+    db.commit()
+    db.refresh(new_course)
+    return new_course
