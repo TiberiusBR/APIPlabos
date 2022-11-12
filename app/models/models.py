@@ -38,6 +38,7 @@ class Course(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     title = Column(String, nullable=False)
+    description = Column(String, nullable=False)
     course_load = Column(Integer, nullable=False)
     author_id = Column(Integer, ForeignKey("users.id"))
 

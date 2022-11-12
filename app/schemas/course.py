@@ -7,6 +7,7 @@ class CourseBase(BaseModel):
     title: str
     course_load: int
     author_id: int
+    description: str
 
     class Config:
         orm_mode = True

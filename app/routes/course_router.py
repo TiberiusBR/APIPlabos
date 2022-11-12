@@ -52,9 +52,9 @@ def get_courses_by_title(name: str, db: Session = Depends(get_db)):
     return courses
 
 
-@course_router.get("/category/{course_id}", response_model=list[course_schema.Course])
-def get_courses_by_category(course_id: int, db: Session = Depends(get_db)):
-    courses = repo.get_course_by_category(db, course_id)
+@course_router.get("/category/{category_id}", response_model=list[course_schema.Course])
+def get_courses_by_category(category_id: int, db: Session = Depends(get_db)):
+    courses = repo.get_course_by_category(db, category_id)
     if courses is None:
         raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
                             detail="No courses found.")
