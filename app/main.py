@@ -6,6 +6,7 @@ from app.routes.category_router import category_router
 from app.routes.video_router import video_router
 from app.routes.course_router import course_router
 from app.routes.auth_router import auth_router
+from app.routes.registry_router import registry_router
 from app.models import models
 from app.database.conn import engine
 
@@ -19,6 +20,7 @@ app.include_router(category_router)
 app.include_router(video_router)
 app.include_router(course_router)
 app.include_router(auth_router)
+app.include_router(registry_router)
 
 
 @app.get("/")

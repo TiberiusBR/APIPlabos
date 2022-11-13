@@ -12,7 +12,9 @@ def get_category(db: Session, category_id: int):
 
 
 def get_category_by_name(db: Session, category_name: str):
-    return db.query(models.Category).filter(models.Category.name == category_name).first()
+    return (
+        db.query(models.Category).filter(models.Category.name == category_name).first()
+    )
 
 
 def create_category(db: Session, category_schema: category.CategoryCreate):
@@ -21,4 +23,3 @@ def create_category(db: Session, category_schema: category.CategoryCreate):
     db.commit()
     db.refresh(new_category)
     return new_category
-

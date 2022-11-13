@@ -12,26 +12,38 @@ def get_course_by_id(db: Session, course_id: int):
 
 
 def get_courses_by_title(db: Session, title: str):
-    search = '%{}%'.format(title)
+    search = "%{}%".format(title)
     return db.query(models.Course).filter(models.Course.title.like(search)).all()
 
 
 def get_courses_by_author_name(db: Session, author_name: str):
-    search = '%{}%'.format(author_name)
-    query = db.query(models.Course).join(models.User).filter(models.User.name.like(search)).all()
+    search = "%{}%".format(author_name)
+    query = (
+        db.query(models.Course)
+        .join(models.User)
+        .filter(models.User.name.like(search))
+        .all()
+    )
     return query
 
 
 def get_courses_by_author_id(db: Session, author_id: int):
-    query = db.query(models.Course).join(models.User).filter(models.User.id == author_id).all()
+    query = (
+        db.query(models.Course)
+        .join(models.User)
+        .filter(models.User.id == author_id)
+        .all()
+    )
     return query
 
 
 def get_course_by_category(db: Session, category_id: int):
-    return db.query(models.Course).\
-        join(models.CategoryCourse).\
-        filter(models.CategoryCourse.category_id == category_id).\
-        all()
+    return (
+        db.query(models.Course)
+        .join(models.CategoryCourse)
+        .filter(models.CategoryCourse.category_id == category_id)
+        .all()
+    )
 
 
 def create_course(db: Session, course: CourseBase):

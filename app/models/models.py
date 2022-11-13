@@ -1,4 +1,4 @@
-from sqlalchemy import Column, String, Integer, ForeignKey, Boolean, Table
+from sqlalchemy import Column, String, Integer, ForeignKey, Boolean
 from sqlalchemy.orm import relationship
 from app.database.conn import Base
 
@@ -16,7 +16,6 @@ class User(Base):
     reviews = relationship("Review", back_populates="user")
 
 
-
 class CategoryCourse(Base):
     __tablename__ = "category_course"
 
@@ -30,7 +29,9 @@ class Category(Base):
     id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
     name = Column(String, nullable=False)
 
-    courses = relationship("Course", secondary=CategoryCourse.__table__, back_populates="categories")
+    courses = relationship(
+        "Course", secondary=CategoryCourse.__table__, back_populates="categories"
+    )
 
 
 class Course(Base):
@@ -47,7 +48,9 @@ class Course(Base):
     registries = relationship("Registry", back_populates="course")
     reviews = relationship("Review", back_populates="course")
 
-    categories = relationship("Category", secondary=CategoryCourse.__table__, back_populates="courses")
+    categories = relationship(
+        "Category", secondary=CategoryCourse.__table__, back_populates="courses"
+    )
 
 
 class Lesson(Base):

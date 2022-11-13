@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from app.schemas.course import Course
 
 
 class CategoryCreate(BaseModel):
@@ -10,9 +11,6 @@ class CategoryCreate(BaseModel):
 
 class Category(CategoryCreate):
     id: int
-
-
-from app.schemas.course import Course
 
 
 class CategoryCourse(Category):

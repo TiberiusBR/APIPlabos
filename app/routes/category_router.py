@@ -13,7 +13,11 @@ def read_categories(db: Session = Depends(get_db)):
     return categories
 
 
-@category_router.post("/", response_model=category_models.Category, status_code=status.HTTP_201_CREATED)
-def create_category(category: category_models.CategoryCreate, db: Session = Depends(get_db)):
+@category_router.post(
+    "/", response_model=category_models.Category, status_code=status.HTTP_201_CREATED
+)
+def create_category(
+    category: category_models.CategoryCreate, db: Session = Depends(get_db)
+):
     created_categories = repo.create_category(db, category)
     return created_categories

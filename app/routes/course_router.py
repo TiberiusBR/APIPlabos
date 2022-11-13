@@ -20,8 +20,9 @@ def get_courses(db: Session = Depends(get_db)):
 def get_course_by_id(course_id: int, db: Session = Depends(get_db)):
     course = repo.get_course_by_id(db, course_id)
     if course is None:
-        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
-                            detail="No course found.")
+        raise HTTPException(
+            status_code=status.HTTP_204_NO_CONTENT, detail="No course found."
+        )
     return course
 
 
@@ -29,8 +30,9 @@ def get_course_by_id(course_id: int, db: Session = Depends(get_db)):
 def get_courses_by_author_name(name: str, db: Session = Depends(get_db)):
     courses = repo.get_courses_by_author_name(db, name)
     if not courses:
-        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
-                            detail="No course found.")
+        raise HTTPException(
+            status_code=status.HTTP_204_NO_CONTENT, detail="No course found."
+        )
     return courses
 
 
@@ -38,8 +40,9 @@ def get_courses_by_author_name(name: str, db: Session = Depends(get_db)):
 def get_courses_by_author_id(author_id: int, db: Session = Depends(get_db)):
     courses = repo.get_courses_by_author_id(db, author_id)
     if courses is None:
-        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
-                            detail="No course found.")
+        raise HTTPException(
+            status_code=status.HTTP_204_NO_CONTENT, detail="No course found."
+        )
     return courses
 
 
@@ -47,8 +50,9 @@ def get_courses_by_author_id(author_id: int, db: Session = Depends(get_db)):
 def get_courses_by_title(name: str, db: Session = Depends(get_db)):
     courses = repo.get_courses_by_title(db, name)
     if courses is None:
-        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
-                            detail="No course found.")
+        raise HTTPException(
+            status_code=status.HTTP_204_NO_CONTENT, detail="No course found."
+        )
     return courses
 
 
@@ -56,8 +60,9 @@ def get_courses_by_title(name: str, db: Session = Depends(get_db)):
 def get_courses_by_category(category_id: int, db: Session = Depends(get_db)):
     courses = repo.get_course_by_category(db, category_id)
     if courses is None:
-        raise HTTPException(status_code=status.HTTP_204_NO_CONTENT,
-                            detail="No courses found.")
+        raise HTTPException(
+            status_code=status.HTTP_204_NO_CONTENT, detail="No courses found."
+        )
     return courses
 
 
@@ -67,14 +72,23 @@ def create_course(course: course_schema.CourseBase, db: Session = Depends(get_db
     return created_course
 
 
-@course_router.post("/category", response_model=list[cat_course_schema.CategoryCourseCreate])
-def insert_categories(cat_course_payload: cat_course_schema.CategoryCoursePayload, db: Session = Depends(get_db)):
+@course_router.post(
+    "/category", response_model=list[cat_course_schema.CategoryCourseCreate]
+)
+def insert_categories(
+    cat_course_payload: cat_course_schema.CategoryCoursePayload,
+    db: Session = Depends(get_db),
+):
     if len(cat_course_payload.category_ids) < 1:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST,
-                            detail="Must insert at least one category id.")
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Must insert at least one category id.",
+        )
     course_id = cat_course_payload.course_id
     categories_id = cat_course_payload.category_ids
-    new_cats_course = [CategoryCourseCreate(course_id=course_id,
-                                            category_id=cat_id) for cat_id in categories_id]
+    new_cats_course = [
+        CategoryCourseCreate(course_id=course_id, category_id=cat_id)
+        for cat_id in categories_id
+    ]
     new_cats_course = category_course_repo.create_category_course(new_cats_course, db)
     return new_cats_course
