@@ -52,3 +52,12 @@ def create_course(db: Session, course: CourseBase):
     db.commit()
     db.refresh(new_course)
     return new_course
+
+
+def get_courses_learning_by_user_id(db: Session, user_id: int):
+    return (
+        db.query(models.Course)
+        .join(models.Registry)
+        .filter(models.Registry.user_id == user_id)
+        .all()
+    )
