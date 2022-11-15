@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS course (
 
 CREATE TABLE IF NOT EXISTS lesson (
 	id int not null GENERATED ALWAYS AS IDENTITY,
-	name varchar(150)not null,
+	name varchar(150) not null,
 	video_uuid varchar(36) not null,
 	course_id int not null,
 	PRIMARY key (id),

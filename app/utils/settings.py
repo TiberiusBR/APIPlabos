@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     POSTGRES_PORT: str = os.environ.get("POSTGRES_PORT")
     POSTGRES_DB: str = os.environ.get("POSTGRES_DB")
     JWT_SECRET_KEY: str = str(os.environ.get("JWT_SECRET_KEY"))
-    ACCESS_TOKEN_EXPIRE_MINUTES: int = 3  # 12 hours
+    ACCESS_TOKEN_EXPIRE_MINUTES: int = 720  # 12 hours
     ALGORITHM: str = "HS256"
 
 
