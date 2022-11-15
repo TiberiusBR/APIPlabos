@@ -8,8 +8,8 @@ from app.helpers.auth_helpers import (
     authenticate_user,
     create_access_token,
     is_password_equal_confirm_password,
-    get_current_user
 )
+from app.middlewares.auth_middleware import get_current_user
 
 auth_router = APIRouter(prefix="/auth")
 
