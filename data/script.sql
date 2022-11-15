@@ -122,3 +122,14 @@ VALUES
 	(2,'3º - Primeiros Passos no Excel','0174f580-9346-4095-af14-db1490abc4fd'),
 	(2,'4º - Manipulação de Arquivos','877379fd-0f92-4c6a-8ba0-6397995881ad'),
 	(2,'5º - Selecionando Dados','5befd4bc-e9d6-462d-9afc-14a23fff636b');
+
+
+/*reviews*/
+insert into
+    review(grade,course_id,user_id)
+VALUES
+    (3,1,1),
+    (5,1,2),
+    (2,2,2),
+    (2,4,1),
+    (5,4,1);

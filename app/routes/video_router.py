@@ -18,7 +18,7 @@ def play_video(request: Request, response: Response):
 
     chunk_size = pow(10, 6)  # 1mb ?
     start_range = int(
-        re.sub(r"\D", "", header_range)
+        re.sub(r",\D", "", header_range)
     )  # range comes in this pattern: 'bytes=0-'.
     # This regex removes the letters
 

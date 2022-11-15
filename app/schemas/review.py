@@ -1,4 +1,5 @@
 from pydantic import BaseModel
+from app.schemas import user
 
 
 class ReviewBase(BaseModel):
@@ -12,3 +13,4 @@ class ReviewBase(BaseModel):
 
 class Review(ReviewBase):
     id: int
+    user: user.UserBaseSchema
