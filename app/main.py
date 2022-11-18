@@ -1,5 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
+from utils.settings import settings
 # from fastapi.security import OAuth2PasswordBearer
 
 from app.routes.category_router import category_router
@@ -32,5 +33,9 @@ async def health():
 
 # DEBUG
 
+uvi_host = settings.UVICORN_HOST
 if __name__ == "__main__":
-    uvicorn.run(app)
+    if uvi_host:
+        uvicorn.run("app.main:app", host=uvi_host)
+    else:
+        uvicorn.run("app.main:app")
