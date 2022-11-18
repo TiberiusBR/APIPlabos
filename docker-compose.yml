@@ -11,7 +11,13 @@ services:
     ports:
       - "5432:5432"
     restart: unless-stopped
-
+  api:
+    container_name: uniftc_api_container
+    image: tiberiusbr/apiplabos
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
 volumes:
   postgres:
 
