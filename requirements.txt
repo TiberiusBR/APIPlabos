@@ -1,4 +1,5 @@
-fastapi[all]
+fastapi
+uvicorn
 psycopg2
 sqlalchemy
 pydantic
@@ -7,3 +8,4 @@ databases
 asyncpg
 passlib
 python-jose
+python-multipart
