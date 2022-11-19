@@ -1,11 +1,11 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.repository import course_repo as repo
-from app.repository import category_course_repo
-from app.schemas import course as course_schema
-from app.schemas import category_course as cat_course_schema
-from app.schemas.category_course import CategoryCourseCreate
-from app.database.conn import get_db
+from repository import course_repo as repo
+from repository import category_course_repo
+from schemas import course as course_schema
+from schemas import category_course as cat_course_schema
+from schemas.category_course import CategoryCourseCreate
+from database.conn import get_db
 
 course_router = APIRouter(prefix="/course")
 

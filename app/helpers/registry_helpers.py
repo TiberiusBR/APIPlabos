@@ -1,6 +1,6 @@
-from app.repository import user_repo
-from app.repository import course_repo
-from app.repository import registry_repo
+from repository import user_repo
+from repository import course_repo
+from repository import registry_repo
 from sqlalchemy.orm import Session
 
 

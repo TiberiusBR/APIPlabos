@@ -1,8 +1,8 @@
 from sqlalchemy.orm import Session
-from app.models import models
-from app.models.models import User
-from app.schemas.user import CreateUserSchema
-from app.helpers.auth_helpers import hash_password
+from models import models
+from models.models import User
+from schemas.user import CreateUserSchema
+from helpers.auth_helpers import hash_password
 
 
 def get_user_by_login(db: Session, login: str) -> User:

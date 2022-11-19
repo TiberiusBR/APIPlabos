@@ -1,8 +1,8 @@
 from fastapi import APIRouter, status, Depends
 from sqlalchemy.orm import Session
-from app.schemas import category as category_models
-from app.repository import category_repo as repo
-from app.database.conn import get_db
+from schemas import category as category_models
+from repository import category_repo as repo
+from database.conn import get_db
 
 category_router = APIRouter(prefix="/category")
 

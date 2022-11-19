@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.models import models
-from app.schemas.course import CourseBase
+from models import models
+from schemas.course import CourseBase
 
 
 def get_all_courses(db: Session):

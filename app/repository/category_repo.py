@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.models import models
-from app.schemas import category
+from models import models
+from schemas import category
 
 
 def get_all_categories(db: Session):

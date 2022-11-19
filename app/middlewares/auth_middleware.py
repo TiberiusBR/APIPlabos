@@ -1,11 +1,11 @@
 from jose import jwt, JWTError
 from fastapi import Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.database.conn import get_db
-from app.schemas.auth_schemas import TokenPayload
+from database.conn import get_db
+from schemas.auth_schemas import TokenPayload
 from pydantic import ValidationError
-from app.repository import user_repo
-from app.utils.settings import settings
+from repository import user_repo
+from utils.settings import settings
 from datetime import datetime
 
 from fastapi.security import OAuth2PasswordBearer

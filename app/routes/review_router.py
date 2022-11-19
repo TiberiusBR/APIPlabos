@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.repository import review_repo as repo
-from app.schemas import review as review_schema
-from app.database.conn import get_db
+from repository import review_repo as repo
+from schemas import review as review_schema
+from database.conn import get_db
 
 review_router = APIRouter(prefix="/review")
 

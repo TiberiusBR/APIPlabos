@@ -1,7 +1,7 @@
 import uuid
 import os
 from starlette.datastructures import Headers
-from app.schemas.lesson import LessonBase
+from schemas.lesson import LessonBase
 
 class GeneratedFileInfo:
     def __init__(self, video_uuid: str, file_location: str) -> None:

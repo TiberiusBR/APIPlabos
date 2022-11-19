@@ -1,9 +1,9 @@
 from jose import jwt
 from passlib.context import CryptContext
-from app.models.models import User
-from app.schemas.user import LoginUserSchema
+from models.models import User
+from schemas.user import LoginUserSchema
 from datetime import datetime, timedelta
-from app.utils.settings import settings
+from utils.settings import settings
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 

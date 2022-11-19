@@ -12,7 +12,7 @@ class Category(CategoryCreate):
     id: int
 
 
-from app.schemas.course import Course
+from schemas.course import Course
 
 
 class CategoryCourse(Category):

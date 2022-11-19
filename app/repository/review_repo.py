@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.models import models
-from app.schemas.review import ReviewBase
+from models import models
+from schemas.review import ReviewBase
 
 
 def get_all_reviews(db: Session):

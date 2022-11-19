@@ -4,13 +4,13 @@ import re
 from fastapi import APIRouter, Request, status, File, UploadFile, Depends, Header
 from fastapi.responses import Response
 
-from app.helpers.video_helpers import generate_file_location
-from app.repository import video_repo as repo
+from helpers.video_helpers import generate_file_location
+from repository import video_repo as repo
 from sqlalchemy.orm import Session
-from app.database.conn import get_db
-from app.schemas.lesson import Lesson
-from app.schemas.lesson import LessonBase
-from app.middlewares.auth_middleware import get_current_user
+from database.conn import get_db
+from schemas.lesson import Lesson
+from schemas.lesson import LessonBase
+from middlewares.auth_middleware import get_current_user
 
 
 video_router = APIRouter(prefix="/video")

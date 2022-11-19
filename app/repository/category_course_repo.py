@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
-from app.models import models
-from app.schemas.category_course import CategoryCourseCreate
+from models import models
+from schemas.category_course import CategoryCourseCreate
 
 
 def create_category_course(cats_course_list: list[CategoryCourseCreate], db: Session):

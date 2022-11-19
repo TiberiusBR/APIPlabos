@@ -1,9 +1,9 @@
 from fastapi import APIRouter, status, Depends, HTTPException
 from sqlalchemy.orm import Session
-from app.schemas import registry
-from app.repository import registry_repo as repo
-from app.database.conn import get_db
-from app.helpers.registry_helpers import (
+from schemas import registry
+from repository import registry_repo as repo
+from database.conn import get_db
+from helpers.registry_helpers import (
     is_existing_course,
     is_existing_user,
     is_registration_user,

@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import and_
-from app.models import models
-from app.schemas.registry import RegistryBase
+from models import models
+from schemas.registry import RegistryBase
 
 
 def create_registry(db: Session, registration_data: RegistryBase):

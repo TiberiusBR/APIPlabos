@@ -1,6 +1,6 @@
 from pydantic import BaseModel
 
-from app.schemas.category import Category
+from schemas.category import Category
 
 
 class CourseBase(BaseModel):

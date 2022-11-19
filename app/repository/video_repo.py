@@ -1,5 +1,5 @@
-from app.schemas.lesson import LessonBase
-from app.models import models
+from schemas.lesson import LessonBase
+from models import models
 from sqlalchemy.orm import Session
 from typing import List
 
