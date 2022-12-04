@@ -92,3 +92,13 @@ def insert_categories(
     ]
     new_cats_course = category_course_repo.create_category_course(new_cats_course, db)
     return new_cats_course
+
+
+@course_router.get("/learning/{user_id}", response_model=list[course_schema.Course])
+def get_course_by_id(user_id: int, db: Session = Depends(get_db)):
+    courses = repo.get_courses_learning_by_user_id(db, user_id)
+    if len(courses) == 0:
+        raise HTTPException(
+            status_code=status.HTTP_204_NO_CONTENT, detail="No course found."
+        )
+    return courses
