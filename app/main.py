@@ -2,6 +2,7 @@ from fastapi import FastAPI
 import uvicorn
 from utils.settings import settings
 # from fastapi.security import OAuth2PasswordBearer
+from fastapi.middleware.cors import CORSMiddleware
 
 from routes.category_router import category_router
 from routes.video_router import video_router
@@ -17,6 +18,19 @@ models.Base.metadata.create_all(bind=engine)
 # oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 app = FastAPI()
+
+origins = [
+    "*"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 app.include_router(category_router)
 app.include_router(video_router)
