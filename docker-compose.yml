@@ -16,6 +16,9 @@ services:
     image: tiberiusbr/apiplabos
     env_file:
       - .env
+    volumes:
+    # This creates a shortcut where docker will be able to access host files.
+      - /home/nodge/Development/plabos_videos:/api/app/files
     ports:
       - "8000:8000"
     links:

@@ -19,6 +19,9 @@ RUN python -m pip install -r requirements.txt
 #Set workdir to access main script
 WORKDIR /api/app
 
+#Create local files folder.
+RUN mkdir -p files
+
 # Expose port
 EXPOSE 8000
 
