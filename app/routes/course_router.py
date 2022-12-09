@@ -10,13 +10,13 @@ from database.conn import get_db
 course_router = APIRouter(prefix="/course")
 
 
-@course_router.get("/", response_model=list[course_schema.Course])
+@course_router.get("/", response_model=list[course_schema.CourseAuthorCategory])
 def get_courses(db: Session = Depends(get_db)):
     courses = repo.get_all_courses(db)
     return courses
 
 
-@course_router.get("/id/{course_id}", response_model=course_schema.Course)
+@course_router.get("/id/{course_id}", response_model=course_schema.CourseAuthorCategory)
 def get_course_by_id(course_id: int, db: Session = Depends(get_db)):
     course = repo.get_course_by_id(db, course_id)
     if course is None:
@@ -26,7 +26,7 @@ def get_course_by_id(course_id: int, db: Session = Depends(get_db)):
     return course
 
 
-@course_router.get("/author/name/{name}", response_model=list[course_schema.Course])
+@course_router.get("/author/name/{name}", response_model=list[course_schema.CourseAuthorCategory])
 def get_courses_by_author_name(name: str, db: Session = Depends(get_db)):
     courses = repo.get_courses_by_author_name(db, name)
     if not courses:
@@ -36,7 +36,7 @@ def get_courses_by_author_name(name: str, db: Session = Depends(get_db)):
     return courses
 
 
-@course_router.get("/author/id/{author_id}", response_model=list[course_schema.Course])
+@course_router.get("/author/id/{author_id}", response_model=list[course_schema.CourseAuthorCategory])
 def get_courses_by_author_id(author_id: int, db: Session = Depends(get_db)):
     courses = repo.get_courses_by_author_id(db, author_id)
     if courses is None:
@@ -46,7 +46,7 @@ def get_courses_by_author_id(author_id: int, db: Session = Depends(get_db)):
     return courses
 
 
-@course_router.get("/title/{name}", response_model=list[course_schema.Course])
+@course_router.get("/title/{name}", response_model=list[course_schema.CourseAuthorCategory])
 def get_courses_by_title(name: str, db: Session = Depends(get_db)):
     courses = repo.get_courses_by_title(db, name)
     if courses is None:
@@ -56,7 +56,7 @@ def get_courses_by_title(name: str, db: Session = Depends(get_db)):
     return courses
 
 
-@course_router.get("/category/{category_id}", response_model=list[course_schema.Course])
+@course_router.get("/category/{category_id}", response_model=list[course_schema.CourseAuthorCategory])
 def get_courses_by_category(category_id: int, db: Session = Depends(get_db)):
     courses = repo.get_course_by_category(db, category_id)
     if courses is None:

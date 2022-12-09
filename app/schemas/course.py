@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
 from schemas.category import Category
+from schemas.user import UserBaseSchema
 
 
 class CourseBase(BaseModel):
@@ -8,6 +9,7 @@ class CourseBase(BaseModel):
     course_load: int
     author_id: int
     description: str
+    image_url: str = None
 
     class Config:
         orm_mode = True
@@ -23,3 +25,6 @@ class CourseCategory(Course):
 
 class CreateCourseCategory(CourseBase):
     categories: list[int] = None
+
+class CourseAuthorCategory(CourseCategory):
+    user: UserBaseSchema = None
