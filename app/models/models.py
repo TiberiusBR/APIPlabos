@@ -42,6 +42,7 @@ class Course(Base):
     description = Column(String, nullable=False)
     course_load = Column(Integer, nullable=False)
     author_id = Column(Integer, ForeignKey("users.id"))
+    image_url = Column(String, nullable=True)
 
     user = relationship("User", back_populates="courses")
     lessons = relationship("Lesson", back_populates="course")
