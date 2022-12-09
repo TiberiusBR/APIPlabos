@@ -1,7 +1,7 @@
 import os
 import re
 
-from fastapi import APIRouter, Request, status, File, UploadFile, Depends, Header
+from fastapi import APIRouter, Request, status, File, UploadFile, Depends, Header, HTTPException
 from fastapi.responses import Response
 
 from helpers.video_helpers import generate_file_location
@@ -19,7 +19,10 @@ video_router = APIRouter(prefix="/video")
 @video_router.get("/{video_uuid}")
 def play_video(video_uuid: str, request: Request, response: Response):
     header_range = request.headers.get("range")
-    # TODO RETURN 400 if range header doesn't exist.
+    if header_range is None:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST, detail="Range header wasn't found."
+        )
     file_path = os.path.join(os.path.abspath(os.getcwd()), "files", f"{video_uuid}.mp4")
     file_size = os.stat(file_path).st_size  # Size in bytes
     # Parse Range
@@ -27,7 +30,7 @@ def play_video(video_uuid: str, request: Request, response: Response):
 
     chunk_size = pow(10, 6)  # 1mb ?
     start_range = int(
-        re.sub(r",\D", "", header_range)
+        header_range.replace("bytes=","").replace("-","")
     )  # range comes in this pattern: 'bytes=0-'.
     # This regex removes the letters
 
@@ -58,7 +61,6 @@ def upload_file(
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
 ):
-    print(user.name)
     file_info = generate_file_location(file.filename)
     lesson = LessonBase(
         name=lesson_name, video_uuid=file_info.video_uuid, course_id=course_id
