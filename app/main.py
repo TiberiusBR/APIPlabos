@@ -11,6 +11,7 @@ from routes.auth_router import auth_router
 from routes.registry_router import registry_router
 from routes.review_router import review_router
 from routes.lesson_router import lesson_router
+from routes.user_router import user_router
 from models import models
 from database.conn import engine
 
@@ -40,6 +41,7 @@ app.include_router(auth_router)
 app.include_router(registry_router)
 app.include_router(review_router)
 app.include_router(lesson_router)
+app.include_router(user_router)
 
 
 @app.get("/")
